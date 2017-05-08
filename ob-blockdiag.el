@@ -4,7 +4,7 @@
 
 ;; Author: Dmitry Moskowski
 ;; Keywords: tools, convenience
-;; Package-Version: 20170501.111
+;; Package-Version: 20170501.112
 ;; Homepage: https://github.com/corpix/ob-blockdiag.el
 
 ;; This file is NOT part of GNU Emacs.
@@ -35,9 +35,12 @@
   (let ((file (cdr (assoc :file params)))
         (tool (cdr (assoc :tool params)))
         (font (cdr (assoc :font params)))
-        (size (cdr (assoc :size params))))
+        (size (cdr (assoc :size params)))
+
+        (buffer-name "*ob-blockdiag*")
+        (error-template "Subprocess '%s' exited with code '%d', see output in '%s' buffer"))
     (save-window-excursion
-      (kill-buffer buffer-name)
+      (let ((buffer (get-buffer buffer-name)))(if buffer (kill-buffer buffer-name) nil))
       (let ((data-file (org-babel-temp-file "blockdiag-input"))
             (args (append (list "-o" file)
                           (if size (list "--size" size) (list))
