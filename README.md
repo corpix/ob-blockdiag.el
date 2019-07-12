@@ -52,6 +52,7 @@ There are some things you could customize:
     - `:tool` if you have blockdiag in unusual location or want to use seqdiag or [others](http://blockdiag.com/en/#table-of-contents)
     - `:font` if you want the `:tool` to use provided font
     - `:size` if you want the `:tool` to use custom size
+    - `:type` if you want the `:tool` to use different file format type, e.g. pdf, svg
 
 ## Errors and output
 

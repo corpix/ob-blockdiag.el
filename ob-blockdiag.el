@@ -39,7 +39,8 @@
     (:exports . "results")
     (:tool    . "blockdiag")
     (:font    . nil)
-    (:size    . nil))
+    (:size    . nil)
+    (:type    . nil))
   "Default arguments for drawing a blockdiag image.")
 
 (add-to-list 'org-src-lang-modes '("blockdiag" . blockdiag))
@@ -49,6 +50,7 @@
         (tool (cdr (assoc :tool params)))
         (font (cdr (assoc :font params)))
         (size (cdr (assoc :size params)))
+        (type (cdr (assoc :type params)))
 
         (buffer-name "*ob-blockdiag*")
         (error-template "Subprocess '%s' exited with code '%d', see output in '%s' buffer"))
@@ -57,7 +59,8 @@
       (let ((data-file (org-babel-temp-file "blockdiag-input"))
             (args (append (list "-o" file)
                           (if size (list "--size" size) (list))
-                          (if font (list "--font" font) (list))))
+                          (if font (list "--font" size) (list))
+                          (if type (list "-T" type) (list))))
             (buffer (get-buffer-create buffer-name)))
         (with-temp-file data-file (insert body))
         (let
