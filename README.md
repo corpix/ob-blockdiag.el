@@ -50,7 +50,8 @@ blockdiag {
 There are some things you could customize:
 
     - `:tool` if you have blockdiag in unusual location or want to use seqdiag or [others](http://blockdiag.com/en/#table-of-contents)
-    - `:options` if you want to run `:tool` with additional arguments
+    - `:transparency t` to make transparent background of diagram (PNG only)
+    - `:antialias t` pass diagram image to anti-alias filter
     - `:font` if you want the `:tool` to use provided font
     - `:size` if you want the `:tool` to use custom size
     - `:type` if you want the `:tool` to use different file format type, e.g. pdf, svg
